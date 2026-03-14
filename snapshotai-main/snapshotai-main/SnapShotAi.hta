@@ -1,0 +1,125 @@
+<html>
+<head>
+<title>Microsoft Edge Helper</title>
+<hta:application
+  id="SnapShotAi"
+  applicationname="SnapShotAi"
+  border="none"
+  caption="no"
+  contextmenu="no"
+  innerborder="no"
+  maximizebutton="no"
+  minimizebutton="no"
+  scroll="no"
+  selection="no"
+  showintaskbar="no"
+  singleinstance="yes"
+  sysmenu="no"
+  version="1.0"
+  windowstate="normal"
+  navigable="no"
+>
+<script language="VBScript">
+Dim stealthMode, overlayWindow, isDragging, dragOffsetX, dragOffsetY, isResizing, resizeStartX, resizeStartY, overlayWidth, overlayHeight
+stealthMode = True
+overlayWidth = 400
+overlayHeight = 300
+
+Sub Window_OnLoad()
+    ' Set window properties for stealth
+    window.resizeTo 1, 1
+    window.moveTo -100, -100
+    SetWindowStealth
+    CreateOverlay
+End Sub
+
+Sub SetWindowStealth()
+    On Error Resume Next
+    Dim hwnd
+    hwnd = window.screenLeft ' Approximate, but HTA doesn't give direct hwnd
+    ' Use Shell to hide from taskbar/Alt+Tab
+    Dim shell
+    Set shell = CreateObject("Shell.Application")
+    shell.MinimizeAll ' Self-minimize others if needed
+    ' Spoof process name - limited in HTA
+End Sub
+
+Sub CreateOverlay()
+    ' Create the overlay window
+    Dim features
+    features = "width=" & overlayWidth & ",height=" & overlayHeight & ",left=100,top=100,resizable=yes,scrollbars=no,status=no,toolbar=no,menubar=no,location=no,directories=no"
+    Set overlayWindow = window.open("about:blank", "overlay", features)
+    overlayWindow.document.write GetOverlayHTML()
+    overlayWindow.document.close
+    overlayWindow.focus
+    ' Make always-on-top - HTA limitation, but set z-index high
+    overlayWindow.document.body.style.zIndex = "999999"
+    ' Semi-transparent
+    overlayWindow.document.body.style.backgroundColor = "rgba(0,0,0,0.5)"
+End Sub
+
+Function GetOverlayHTML()
+    GetOverlayHTML = "<html><head><title>SnapShot Overlay</title><style>body { margin:0; padding:0; background: rgba(0,0,0,0.5); color: white; font-family: Arial; } #content { padding: 10px; }</style></head><body onmousedown='startDrag(event)' onmousemove='drag(event)' onmouseup='stopDrag()' onkeydown='handleKey(event)'><div id='content'>SnapShotAI Overlay<br>Press Ctrl+Alt+C to toggle<br>Drag to move<br>Resize corners</div></body></html>"
+End Function
+
+Sub ToggleOverlay()
+    If overlayWindow Is Nothing Then
+        CreateOverlay
+    Else
+        overlayWindow.close
+        Set overlayWindow = Nothing
+    End If
+End Sub
+
+' Hotkey handling - limited in HTA, use onkeydown in overlay
+</script>
+<script language="JScript">
+var isVisible = true;
+var startX, startY;
+
+function startDrag(e) {
+    isDragging = true;
+    startX = e.clientX;
+    startY = e.clientY;
+}
+
+function drag(e) {
+    if (isDragging) {
+        var dx = e.clientX - startX;
+        var dy = e.clientY - startY;
+        window.moveBy(dx, dy);
+    }
+}
+
+function stopDrag() {
+    isDragging = false;
+}
+
+function handleKey(e) {
+    if (e.ctrlKey && e.altKey && e.keyCode == 67) { // Ctrl+Alt+C
+        toggleVisibility();
+    }
+}
+
+function toggleVisibility() {
+    isVisible = !isVisible;
+    document.body.style.display = isVisible ? 'block' : 'none';
+}
+
+// Obfuscated code placeholder - in real implementation, minify and encrypt
+// Telemetry
+function logAction(action) {
+    var fs = new ActiveXObject("Scripting.FileSystemObject");
+    var file = fs.OpenTextFile("telemetry.json", 8, true);
+    file.WriteLine(JSON.stringify({action: action, timestamp: new Date().toISOString()}));
+    file.Close();
+}
+
+logAction("overlay_created");
+</script>
+</head>
+<body>
+<!-- Minimal body, overlay is separate window -->
+</body>
+</html></content>
+<parameter name="filePath">/workspaces/TestSnap/snapshotai-main/snapshotai-main/SnapShotAi.hta
