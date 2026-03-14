@@ -1,0 +1,9 @@
+.vercel/
+__pycache__/
+*.pyc
+dist/
+build/
+*.spec
+.env
+config.json
+landing/downloads/
