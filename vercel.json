@@ -1,0 +1,20 @@
+{
+  "buildCommand": "",
+  "outputDirectory": "TestSnapper-main/TestSnapper-main/landing",
+  "functions": {
+    "TestSnapper-main/TestSnapper-main/api/*.py": {
+      "runtime": "@vercel/python@4.6.0",
+      "maxDuration": 60
+    }
+  },
+  "rewrites": [
+    { "source": "/api/:path*", "destination": "/api/:path*" },
+    { "source": "/dashboard", "destination": "/dashboard.html" },
+    { "source": "/pricing", "destination": "/pricing.html" },
+    { "source": "/docs", "destination": "/docs.html" },
+    { "source": "/help", "destination": "/docs.html" },
+    { "source": "/downloads/TestSnapper.exe", "destination": "http://5.78.191.207:8766/TestSnapper.exe" },
+    { "source": "/downloads/TestSnapper.dmg", "destination": "http://5.78.191.207:8766/TestSnapper.dmg" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}

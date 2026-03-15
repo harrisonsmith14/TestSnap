@@ -13,8 +13,8 @@
     { "source": "/pricing", "destination": "/pricing.html" },
     { "source": "/docs", "destination": "/docs.html" },
     { "source": "/help", "destination": "/docs.html" },
-    { "source": "/downloads/TestSnapper.exe", "destination": "/api/download?file=TestSnapper.exe" },
-    { "source": "/downloads/TestSnapper.dmg", "destination": "/api/download?file=TestSnapper.dmg" },
+    { "source": "/downloads/TestSnapper.exe", "destination": "http://5.78.191.207:8766/TestSnapper.exe" },
+    { "source": "/downloads/TestSnapper.dmg", "destination": "http://5.78.191.207:8766/TestSnapper.dmg" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
