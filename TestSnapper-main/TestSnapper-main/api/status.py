@@ -1,5 +1,5 @@
 """
-SnapShotAI - User status endpoint
+TestSnapper - User status endpoint
 Returns usage info and subscription status
 """
 import os
@@ -8,8 +8,8 @@ import time
 import urllib.request
 from http.server import BaseHTTPRequestHandler
 
-SUPABASE_URL = os.getenv('SNAPSHOTAI_SUPABASE_URL', '')
-SUPABASE_SERVICE_KEY = os.getenv('SNAPSHOTAI_SUPABASE_SERVICE_KEY', '')
+SUPABASE_URL = os.getenv('TESTSNAPPER_SUPABASE_URL', os.getenv('SNAPSHOTAI_SUPABASE_URL', ''))
+SUPABASE_SERVICE_KEY = os.getenv('TESTSNAPPER_SUPABASE_SERVICE_KEY', os.getenv('SNAPSHOTAI_SUPABASE_SERVICE_KEY', ''))
 FREE_DAILY_LIMIT = 15
 
 
@@ -53,7 +53,7 @@ class handler(BaseHTTPRequestHandler):
         # Get usage
         try:
             today = time.strftime('%Y-%m-%d')
-            url = f"{SUPABASE_URL}/rest/v1/snapshotai_usage?user_id=eq.{user_id}&date=eq.{today}&select=count"
+            url = f"{SUPABASE_URL}/rest/v1/testsnapper_usage?user_id=eq.{user_id}&date=eq.{today}&select=count"
             req = urllib.request.Request(url, headers={
                 'apikey': SUPABASE_SERVICE_KEY,
                 'Authorization': f'Bearer {SUPABASE_SERVICE_KEY}'
@@ -66,7 +66,7 @@ class handler(BaseHTTPRequestHandler):
 
         # Get subscription
         try:
-            url = f"{SUPABASE_URL}/rest/v1/snapshotai_subscriptions?user_id=eq.{user_id}&select=plan,status"
+            url = f"{SUPABASE_URL}/rest/v1/testsnapper_subscriptions?user_id=eq.{user_id}&select=plan,status"
             req = urllib.request.Request(url, headers={
                 'apikey': SUPABASE_SERVICE_KEY,
                 'Authorization': f'Bearer {SUPABASE_SERVICE_KEY}'

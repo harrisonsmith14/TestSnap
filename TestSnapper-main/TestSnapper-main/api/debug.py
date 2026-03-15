@@ -6,8 +6,8 @@ import urllib.error
 import traceback
 from http.server import BaseHTTPRequestHandler
 
-SUPABASE_URL = os.getenv('SNAPSHOTAI_SUPABASE_URL', '')
-SUPABASE_ANON_KEY = os.getenv('SNAPSHOTAI_SUPABASE_ANON_KEY', '')
+SUPABASE_URL = os.getenv('TESTSNAPPER_SUPABASE_URL', os.getenv('SNAPSHOTAI_SUPABASE_URL', ''))
+SUPABASE_ANON_KEY = os.getenv('TESTSNAPPER_SUPABASE_ANON_KEY', os.getenv('SNAPSHOTAI_SUPABASE_ANON_KEY', ''))
 
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):

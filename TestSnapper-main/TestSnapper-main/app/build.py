@@ -1,12 +1,13 @@
 """
-Build script for SnapShotAI desktop app
+Build script for TestSnapper desktop app
 Creates standalone executables for Windows and macOS
 """
 import subprocess
 import sys
+import os
 import platform
 
-APP_NAME = "SnapShotAI"
+APP_NAME = "TestSnapper"
 ICON_WIN = "assets/icon.ico"
 ICON_MAC = "assets/icon.icns"
 
@@ -26,9 +27,9 @@ def build():
         cmd.extend(['--icon', ICON_WIN])
     elif system == 'Darwin':
         cmd.extend(['--icon', ICON_MAC])
-        cmd.extend(['--osx-bundle-identifier', 'com.snapshotai.app'])
+        cmd.extend(['--osx-bundle-identifier', 'com.testsnapper.app'])
     
-    cmd.append('snapshotai.py')
+    cmd.append('testsnapper.py')
     
     print(f"Building {APP_NAME} for {system}...")
     subprocess.run(cmd, check=True)

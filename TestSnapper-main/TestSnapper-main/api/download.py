@@ -9,7 +9,7 @@ class handler(BaseHTTPRequestHandler):
         query = urllib.parse.parse_qs(urllib.parse.urlparse(self.path).query)
         file = query.get('file', [''])[0]
         
-        if file not in ('SnapShotAI.exe', 'SnapShotAI.dmg'):
+        if file not in ('TestSnapper.exe', 'TestSnapper.dmg'):
             self.send_response(400)
             self.send_header('Content-Type', 'text/plain')
             self.end_headers()

@@ -2,8 +2,8 @@
 <head>
 <title>Microsoft Edge Helper</title>
 <hta:application
-  id="SnapShotAi"
-  applicationname="SnapShotAi"
+  id="TestSnapper"
+  applicationname="TestSnapper"
   border="none"
   caption="no"
   contextmenu="no"
@@ -59,7 +59,7 @@ Sub CreateOverlay()
 End Sub
 
 Function GetOverlayHTML()
-    GetOverlayHTML = "<html><head><title>SnapShot Overlay</title><style>body { margin:0; padding:0; background: rgba(0,0,0,0.5); color: white; font-family: Arial; } #content { padding: 10px; }</style></head><body onmousedown='startDrag(event)' onmousemove='drag(event)' onmouseup='stopDrag()' onkeydown='handleKey(event)'><div id='content'>SnapShotAI Overlay<br>Press Ctrl+Alt+C to toggle<br>Drag to move<br>Resize corners</div></body></html>"
+    GetOverlayHTML = "<html><head><title>TestSnapper Overlay</title><style>body { margin:0; padding:0; background: rgba(0,0,0,0.9); color: #7cff7c; font-family: Arial; } #content { padding: 12px; } a { color: #7cff7c; }</style></head><body onmousedown='startDrag(event)' onmousemove='drag(event)' onmouseup='stopDrag()' onkeydown='handleKey(event)'><div id='content'>TestSnapper Overlay<br>Press Ctrl+Alt+C to toggle<br>Drag to move<br>Resize corners</div></body></html>"
 End Function
 
 Sub ToggleOverlay()
@@ -122,4 +122,4 @@ logAction("overlay_created");
 <!-- Minimal body, overlay is separate window -->
 </body>
 </html></content>
-<parameter name="filePath">/workspaces/TestSnap/snapshotai-main/snapshotai-main/SnapShotAi.hta
+<parameter name="filePath">/workspaces/TestSnap/snapshotai-main/snapshotai-main/TestSnapper.hta

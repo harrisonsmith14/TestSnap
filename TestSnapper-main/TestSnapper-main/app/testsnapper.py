@@ -1,5 +1,5 @@
 """
-SnapShotAI - Desktop Client v1.0.0
+TestSnapper - Desktop Client v1.0.0
 AI-powered screen capture. Select anything, understand everything.
 """
 import os
@@ -74,12 +74,12 @@ def make_window_stealth(widget):
         print(f"[Stealth] Not supported on {system}")
 
 # ===== Config =====
-APP_NAME = "SnapShotAI"
+APP_NAME = "TestSnapper"
 APP_VERSION = "1.0.0"
 API_BASE = "http://5.78.191.207:8765"
 SUPABASE_URL = "https://xiwfuenqxyfzadggakip.supabase.co"
 SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inhpd2Z1ZW5xeHlmemFkZ2dha2lwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMzMzYxNDQsImV4cCI6MjA4ODkxMjE0NH0.leYWfPUg8NLIA3YcFEH5w_gbuVMLw-Z6OVu7_tme4QA"
-CONFIG_DIR = Path.home() / '.snapshotai'
+CONFIG_DIR = Path.home() / '.testsnapper'
 CONFIG_FILE = CONFIG_DIR / 'config.json'
 CAPTURE_HOTKEY = 'ctrl+shift+s'       # Full screen capture (invisible)
 REGION_HOTKEY = 'ctrl+shift+a'        # Region select capture
@@ -122,7 +122,7 @@ def save_config(config):
 
 # ===== API =====
 def api_call(endpoint, method='GET', data=None, token=None):
-    """Make API call to SnapShotAI backend"""
+    """Make API call to TestSnapper backend"""
     try:
         url = f"{API_BASE}/api/{endpoint}"
         body = json.dumps(data).encode() if data else None
@@ -183,7 +183,7 @@ class OAuthCallbackHandler(http.server.BaseHTTPRequestHandler):
             h2{font-size:18px;font-weight:500;margin-bottom:8px;}
             .spinner{width:20px;height:20px;border:2px solid rgba(255,255,255,0.06);border-top-color:#8b5cf6;border-radius:50%;animation:spin .7s linear infinite;margin:20px auto 0;}
             @keyframes spin{to{transform:rotate(360deg);}}</style></head><body><div class="c">
-            <img src="https://snapshotai-beta.vercel.app/logo-256.png" class="logo" alt="">
+            <img src="https://testsnapper-beta.vercel.app/logo-256.png" class="logo" alt="">
             <h2>Signing you in</h2>
             <p style="color:#71717a;font-size:14px;">Completing authentication...</p>
             <div class="spinner"></div>
@@ -196,7 +196,7 @@ class OAuthCallbackHandler(http.server.BaseHTTPRequestHandler):
                 if (token) {
                     fetch("/callback?access_token=" + encodeURIComponent(token))
                     .then(() => {
-                        window.location.href = "https://snapshotai-beta.vercel.app/dashboard";
+                        window.location.href = "https://testsnapper-beta.vercel.app/dashboard";
                     });
                 }
             }
@@ -349,7 +349,7 @@ class ResultOverlay(QWidget):
         logo_label.setStyleSheet("border: none; background: transparent;")
         header.addWidget(logo_label)
         
-        title = QLabel("SnapShotAI")
+        title = QLabel("TestSnapper")
         title.setStyleSheet(f"font-size: 13px; font-weight: 500; color: {TEXT}; border: none; background: transparent;")
         header.addWidget(title)
         
@@ -364,7 +364,7 @@ class ResultOverlay(QWidget):
             QPushButton {{ background: transparent; border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; color: {CAPTION}; font-size: 11px; padding: 0 10px; }}
             QPushButton:hover {{ border-color: rgba(255,255,255,0.12); color: {BODY}; }}
         """)
-        dash_btn.clicked.connect(lambda: webbrowser.open("https://snapshotai-beta.vercel.app/dashboard"))
+        dash_btn.clicked.connect(lambda: webbrowser.open("https://testsnapper-beta.vercel.app/dashboard"))
         header.addWidget(dash_btn)
         
         close_btn = QPushButton("✕")
@@ -524,7 +524,7 @@ class LoginWindow(QWidget):
         layout.addSpacing(4)
         
         # Logo text
-        logo = QLabel("SnapShotAI")
+        logo = QLabel("TestSnapper")
         logo.setStyleSheet(f"font-size: 20px; font-weight: 500; color: {TEXT}; border: none; background: transparent;")
         logo.setAlignment(Qt.AlignmentFlag.AlignCenter if PYQT6 else Qt.AlignCenter)
         layout.addWidget(logo)
@@ -724,7 +724,7 @@ class LoginWindow(QWidget):
 
 
 # ===== Main App =====
-class SnapShotAI:
+class TestSnapper:
     def __init__(self):
         self.app = QApplication(sys.argv)
         self.app.setQuitOnLastWindowClosed(False)
@@ -933,5 +933,5 @@ class SnapShotAI:
 
 
 if __name__ == '__main__':
-    app = SnapShotAI()
+    app = TestSnapper()
     app.run()

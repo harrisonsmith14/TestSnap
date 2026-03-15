@@ -1,5 +1,5 @@
 """
-SnapShotAI Stripe Handler
+TestSnapper Stripe Handler
 - POST /checkout — create Stripe Checkout session
 - POST /webhook — handle Stripe events (subscription created/cancelled)
 - POST /portal — create billing portal session
@@ -11,17 +11,17 @@ import urllib.parse
 import stripe
 
 stripe.api_key = os.environ.get('STRIPE_SECRET_KEY', '')
-STRIPE_WEBHOOK_SECRET = os.environ.get('SNAPSHOTAI_STRIPE_WEBHOOK_SECRET', '')
-PRICE_ID = os.environ.get('SNAPSHOTAI_STRIPE_PRICE_ID', 'price_1TAij45B7nvYWk02xbDUuXtw')
-SUPABASE_URL = os.environ.get('SNAPSHOTAI_SUPABASE_URL', '')
-SUPABASE_SERVICE_KEY = os.environ.get('SNAPSHOTAI_SUPABASE_SERVICE_KEY', '')
-SITE_URL = 'https://snapshotai-beta.vercel.app'
+STRIPE_WEBHOOK_SECRET = os.environ.get('TESTSNAPPER_STRIPE_WEBHOOK_SECRET', os.environ.get('SNAPSHOTAI_STRIPE_WEBHOOK_SECRET', ''))
+PRICE_ID = os.environ.get('TESTSNAPPER_STRIPE_PRICE_ID', os.environ.get('SNAPSHOTAI_STRIPE_PRICE_ID', 'price_1TAij45B7nvYWk02xbDUuXtw'))
+SUPABASE_URL = os.environ.get('TESTSNAPPER_SUPABASE_URL', os.environ.get('SNAPSHOTAI_SUPABASE_URL', ''))
+SUPABASE_SERVICE_KEY = os.environ.get('TESTSNAPPER_SUPABASE_SERVICE_KEY', os.environ.get('SNAPSHOTAI_SUPABASE_SERVICE_KEY', ''))
+SITE_URL = 'https://testsnapper-beta.vercel.app'
 
 
 def update_subscription_status(user_id, plan, stripe_customer_id=None, stripe_subscription_id=None):
     """Upsert user's subscription in Supabase"""
     try:
-        url = f"{SUPABASE_URL}/rest/v1/snapshotai_subscriptions"
+        url = f"{SUPABASE_URL}/rest/v1/testsnapper_subscriptions"
         
         upsert_data = {
             'user_id': user_id,
@@ -48,7 +48,7 @@ def update_subscription_status(user_id, plan, stripe_customer_id=None, stripe_su
 def get_user_by_stripe_customer(customer_id):
     """Look up user_id from stripe customer_id"""
     try:
-        url = f"{SUPABASE_URL}/rest/v1/snapshotai_subscriptions?stripe_customer_id=eq.{customer_id}&select=user_id"
+        url = f"{SUPABASE_URL}/rest/v1/testsnapper_subscriptions?stripe_customer_id=eq.{customer_id}&select=user_id"
         req = urllib.request.Request(url)
         req.add_header('apikey', SUPABASE_SERVICE_KEY)
         req.add_header('Authorization', f'Bearer {SUPABASE_SERVICE_KEY}')
@@ -95,7 +95,7 @@ def handle_portal(body):
     
     try:
         # Get stripe customer ID from supabase
-        url = f"{SUPABASE_URL}/rest/v1/snapshotai_subscriptions?user_id=eq.{user_id}&select=stripe_customer_id"
+        url = f"{SUPABASE_URL}/rest/v1/testsnapper_subscriptions?user_id=eq.{user_id}&select=stripe_customer_id"
         req = urllib.request.Request(url)
         req.add_header('apikey', SUPABASE_SERVICE_KEY)
         req.add_header('Authorization', f'Bearer {SUPABASE_SERVICE_KEY}')

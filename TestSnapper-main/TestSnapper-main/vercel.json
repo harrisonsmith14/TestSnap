@@ -13,8 +13,8 @@
     { "source": "/pricing", "destination": "/pricing.html" },
     { "source": "/docs", "destination": "/docs.html" },
     { "source": "/help", "destination": "/docs.html" },
-    { "source": "/downloads/SnapShotAI.exe", "destination": "/api/download?file=SnapShotAI.exe" },
-    { "source": "/downloads/SnapShotAI.dmg", "destination": "/api/download?file=SnapShotAI.dmg" },
+    { "source": "/downloads/TestSnapper.exe", "destination": "/api/download?file=TestSnapper.exe" },
+    { "source": "/downloads/TestSnapper.dmg", "destination": "/api/download?file=TestSnapper.dmg" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }

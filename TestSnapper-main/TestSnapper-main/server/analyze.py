@@ -1,5 +1,5 @@
 """
-SnapShotAI - Analysis Server
+TestSnapper - Analysis Server
 Runs on Hetzner VPS — no timeout limits
 """
 import os
@@ -25,9 +25,9 @@ if env_path.exists():
 import google.generativeai as genai
 
 GEMINI_API_KEY = os.getenv('GEMINI_API_KEY', '')
-SUPABASE_URL = os.getenv('SNAPSHOTAI_SUPABASE_URL', '')
-SUPABASE_ANON_KEY = os.getenv('SNAPSHOTAI_SUPABASE_ANON_KEY', '')
-SUPABASE_SERVICE_KEY = os.getenv('SNAPSHOTAI_SUPABASE_SERVICE_KEY', '')
+SUPABASE_URL = os.getenv('TESTSNAPPER_SUPABASE_URL', os.getenv('SNAPSHOTAI_SUPABASE_URL', ''))
+SUPABASE_ANON_KEY = os.getenv('TESTSNAPPER_SUPABASE_ANON_KEY', os.getenv('SNAPSHOTAI_SUPABASE_ANON_KEY', ''))
+SUPABASE_SERVICE_KEY = os.getenv('TESTSNAPPER_SUPABASE_SERVICE_KEY', os.getenv('SNAPSHOTAI_SUPABASE_SERVICE_KEY', ''))
 FREE_DAILY_LIMIT = 15
 PORT = 8765
 MODEL = 'gemini-2.5-flash'
@@ -35,8 +35,8 @@ MODEL = 'gemini-2.5-flash'
 genai.configure(api_key=GEMINI_API_KEY)
 model = genai.GenerativeModel(MODEL)
 
-print(f"[SnapShotAI] Gemini model: {MODEL}")
-print(f"[SnapShotAI] Supabase: {SUPABASE_URL[:40]}...")
+print(f"[TestSnapper] Gemini model: {MODEL}")
+print(f"[TestSnapper] Supabase: {SUPABASE_URL[:40]}...")
 
 
 def verify_user(token):
@@ -54,7 +54,7 @@ def verify_user(token):
 def get_usage(user_id):
     try:
         today = time.strftime('%Y-%m-%d')
-        url = f"{SUPABASE_URL}/rest/v1/snapshotai_usage?user_id=eq.{user_id}&date=eq.{today}&select=count"
+        url = f"{SUPABASE_URL}/rest/v1/testsnapper_usage?user_id=eq.{user_id}&date=eq.{today}&select=count"
         req = urllib.request.Request(url)
         req.add_header('apikey', SUPABASE_SERVICE_KEY)
         req.add_header('Authorization', f'Bearer {SUPABASE_SERVICE_KEY}')
@@ -67,7 +67,7 @@ def get_usage(user_id):
 
 def is_pro(user_id):
     try:
-        url = f"{SUPABASE_URL}/rest/v1/snapshotai_subscriptions?user_id=eq.{user_id}&plan=eq.pro&status=eq.active&select=id"
+        url = f"{SUPABASE_URL}/rest/v1/testsnapper_subscriptions?user_id=eq.{user_id}&plan=eq.pro&status=eq.active&select=id"
         req = urllib.request.Request(url)
         req.add_header('apikey', SUPABASE_SERVICE_KEY)
         req.add_header('Authorization', f'Bearer {SUPABASE_SERVICE_KEY}')
@@ -226,7 +226,7 @@ class Handler(BaseHTTPRequestHandler):
 if __name__ == '__main__':
     server = HTTPServer(('0.0.0.0', PORT), Handler)
     print(f"\n{'='*50}")
-    print(f"  📸 SnapShotAI Analysis Server")
+    print(f"  📸 TestSnapper Analysis Server")
     print(f"  Port: {PORT}")
     print(f"  Model: {MODEL}")
     print(f"{'='*50}\n")

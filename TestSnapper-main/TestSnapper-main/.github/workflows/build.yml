@@ -1,4 +1,4 @@
-name: Build SnapShotAI
+name: Build TestSnapper
 
 on:
   push:
@@ -27,13 +27,13 @@ jobs:
         run: |
           cd app
           copy icon.ico icon_build.ico
-          pyinstaller --name SnapShotAI --onefile --windowed --icon=icon_build.ico --hidden-import=pynput.keyboard._win32 --hidden-import=pynput.mouse._win32 --add-data "icon.ico;." --clean snapshotai.py
+          pyinstaller --name TestSnapper --onefile --windowed --icon=icon_build.ico --hidden-import=pynput.keyboard._win32 --hidden-import=pynput.mouse._win32 --add-data "icon.ico;." --clean snapshotai.py
       
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: SnapShotAI-Windows
-          path: app/dist/SnapShotAI.exe
+          name: TestSnapper-Windows
+          path: app/dist/TestSnapper.exe
 
   build-mac:
     runs-on: macos-latest
@@ -52,20 +52,20 @@ jobs:
       - name: Build .app
         run: |
           cd app
-          pyinstaller --name SnapShotAI --onefile --windowed --osx-bundle-identifier com.snapshotai.app --hidden-import=pynput.keyboard._darwin --hidden-import=pynput.mouse._darwin --clean snapshotai.py
+          pyinstaller --name TestSnapper --onefile --windowed --osx-bundle-identifier com.testsnapper.app --hidden-import=pynput.keyboard._darwin --hidden-import=pynput.mouse._darwin --clean snapshotai.py
       
       - name: Create DMG
         run: |
           cd app/dist
           mkdir -p dmg_contents
-          cp -r SnapShotAI dmg_contents/ 2>/dev/null || cp SnapShotAI dmg_contents/
-          hdiutil create -volname "SnapShotAI" -srcfolder dmg_contents -ov -format UDZO SnapShotAI.dmg
+          cp -r TestSnapper dmg_contents/ 2>/dev/null || cp TestSnapper dmg_contents/
+          hdiutil create -volname "TestSnapper" -srcfolder dmg_contents -ov -format UDZO TestSnapper.dmg
       
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: SnapShotAI-Mac
-          path: app/dist/SnapShotAI.dmg
+          name: TestSnapper-Mac
+          path: app/dist/TestSnapper.dmg
 
   release:
     needs: [build-windows, build-mac]
@@ -74,19 +74,19 @@ jobs:
       - name: Download Windows build
         uses: actions/download-artifact@v4
         with:
-          name: SnapShotAI-Windows
+          name: TestSnapper-Windows
           path: ./release
       
       - name: Download Mac build
         uses: actions/download-artifact@v4
         with:
-          name: SnapShotAI-Mac
+          name: TestSnapper-Mac
           path: ./release
       
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            release/SnapShotAI.exe
-            release/SnapShotAI.dmg
+            release/TestSnapper.exe
+            release/TestSnapper.dmg
           generate_release_notes: true

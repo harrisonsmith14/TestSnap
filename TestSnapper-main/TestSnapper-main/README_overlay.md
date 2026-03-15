@@ -1,4 +1,4 @@
-# SnapShotAI Overlay Tool
+# TestSnapper Overlay Tool
 
 This is an evolved version of the undetectable Windows overlay app, now web-downloadable.
 
@@ -13,11 +13,11 @@ This is an evolved version of the undetectable Windows overlay app, now web-down
 - Self-minimizing of other windows
 
 ## Download Options
-1. **.HTA Version**: Single file `SnapShotAi.hta` - runs via mshta.exe, appears as HTML to filters.
-2. **ZIP Version**: `SnapShotAi.zip` containing `index.html` and assets - open as local file:// if .HTA blocked.
+1. **.HTA Version**: Single file `TestSnapper.hta` - runs via mshta.exe, appears as HTML to filters.
+2. **ZIP Version**: `TestSnapper.zip` containing `index.html` and assets - open as local file:// if .HTA blocked.
 
 ## Hosting Instructions
-1. Upload `host.html`, `SnapShotAi.hta`, and `SnapShotAi.zip` to any web host (GitHub Pages, itch.io, etc.).
+1. Upload `host.html`, `TestSnapper.hta`, and `TestSnapper.zip` to any web host (GitHub Pages, itch.io, etc.).
 2. For randomization: Rename files with random names/timestamps on each download if possible.
 3. Link to `host.html` as the download page.
 

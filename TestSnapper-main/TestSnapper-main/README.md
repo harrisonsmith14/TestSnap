@@ -1,13 +1,13 @@
-# 📸 SnapShotAI
+# 📸 TestSnapper
 
 AI-powered screen capture. Select anything on your screen, get instant AI explanations.
 
 ## Architecture
 
 ```
-snapshotai/
+testsnapper/
 ├── app/                  # Desktop client (Python + PyQt6)
-│   ├── snapshotai.py     # Main app
+│   ├── testsnapper.py     # Main app
 │   ├── requirements.txt  # Python deps
 │   └── build.py          # PyInstaller build script
 ├── api/                  # Vercel serverless backend

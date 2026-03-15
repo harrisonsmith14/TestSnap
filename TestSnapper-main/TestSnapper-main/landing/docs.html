@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Help — SnapShotAI</title>
+    <title>Help — TestSnapper</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,10 +11,10 @@
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --bg: #09090b; --surface: #0f0f13; --surface-2: #16161c;
-            --purple: #8b5cf6; --text: #f4f4f5; --text-secondary: #a1a1aa;
-            --text-tertiary: #71717a; --border: rgba(255,255,255,0.06);
-            --border-hover: rgba(255,255,255,0.12);
+            --bg: #030803; --surface: #051005; --surface-2: #07120a;
+            --purple: #0eff0e; --text: #b7ffb7; --text-secondary: #8cff8c;
+            --text-tertiary: #6aff6a; --border: rgba(0,255,0,0.14);
+            --border-hover: rgba(0,255,0,0.25);
         }
         body {
             font-family: 'Inter', -apple-system, sans-serif;
@@ -151,8 +151,8 @@
 <nav>
     <div class="nav-inner">
         <a href="/" class="nav-logo">
-            <img src="/logo-256.png" alt="SnapShotAI">
-            SnapShotAI
+            <img src="/logo-256.png" alt="TestSnapper">
+            TestSnapper
         </a>
         <div class="nav-links">
             <a href="/">Home</a>
@@ -184,13 +184,13 @@
         </div>
 
         <div class="faq-item">
-            <h3>Where does SnapShotAI install?</h3>
-            <p>SnapShotAI is a portable app — no installation needed. Just run the .exe from wherever you downloaded it (Downloads folder, Desktop, etc). It runs in your system tray near the clock.</p>
+            <h3>Where does TestSnapper install?</h3>
+            <p>TestSnapper is a portable app — no installation needed. Just run the .exe from wherever you downloaded it (Downloads folder, Desktop, etc). It runs in your system tray near the clock.</p>
         </div>
 
         <div class="faq-item">
             <h3>How do I uninstall it?</h3>
-            <p>Just delete the .exe file. SnapShotAI also stores a config file at <code>~/.snapshotai/config.json</code> — delete that folder too for a clean removal.</p>
+            <p>Just delete the .exe file. TestSnapper also stores a config file at <code>~/.testsnapper/config.json</code> — delete that folder too for a clean removal.</p>
         </div>
     </div>
 
@@ -206,14 +206,14 @@
             <div class="shortcut-cell"><span class="kbd">Ctrl</span> <span class="kbd">Shift</span> <span class="kbd">A</span></div>
             <div class="shortcut-cell">Region capture (drag to select an area)</div>
             <div class="shortcut-cell"><span class="kbd">Ctrl</span> <span class="kbd">Shift</span> <span class="kbd">Q</span></div>
-            <div class="shortcut-cell">Quit SnapShotAI</div>
+            <div class="shortcut-cell">Quit TestSnapper</div>
         </div>
 
         <div class="faq-item">
             <h3>Hotkeys aren't working</h3>
             <p>Try these fixes in order:</p>
             <div class="steps">
-                <div class="step-item">Make sure SnapShotAI is running — look for the purple ghost icon in your system tray (near the clock).</div>
+                <div class="step-item">Make sure TestSnapper is running — look for the purple ghost icon in your system tray (near the clock).</div>
                 <div class="step-item">Try <strong>right-clicking the tray icon</strong> and selecting "Full Screen Capture" to verify the app works.</div>
                 <div class="step-item">Try running the app <strong>as Administrator</strong> — right-click the .exe → "Run as administrator".</div>
                 <div class="step-item">Check if another app is using the same shortcut (some screenshot tools use Ctrl+Shift+S).</div>
@@ -227,7 +227,7 @@
 
         <div class="faq-item">
             <h3>How does stealth mode work?</h3>
-            <p>SnapShotAI uses a native Windows API (<code>SetWindowDisplayAffinity</code>) to make the AI response overlay invisible to all screen capture tools — Zoom, Teams, Discord, OBS, and any screen recording software.</p>
+            <p>TestSnapper uses a native Windows API (<code>SetWindowDisplayAffinity</code>) to make the AI response overlay invisible to all screen capture tools — Zoom, Teams, Discord, OBS, and any screen recording software.</p>
             <p>You see the answers on your monitor. Anyone watching via screen share sees nothing.</p>
         </div>
 
@@ -258,7 +258,7 @@
 
         <div class="faq-item">
             <h3>How do I sign out or switch accounts?</h3>
-            <p>Right-click the tray icon and select "Sign Out", or delete <code>~/.snapshotai/config.json</code> and restart the app.</p>
+            <p>Right-click the tray icon and select "Sign Out", or delete <code>~/.testsnapper/config.json</code> and restart the app.</p>
         </div>
 
         <div class="faq-item">
@@ -297,7 +297,7 @@
 </div>
 
 <footer>
-    <p>© 2026 SnapShotAI</p>
+    <p>© 2026 TestSnapper</p>
 </footer>
 
 <script>

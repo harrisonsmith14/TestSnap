@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SnapShotAI — AI-powered screen capture</title>
+    <title>TestSnapper — AI-powered screen capture</title>
     <meta name="description" content="Press a hotkey, capture anything on screen, get AI-powered answers instantly. Invisible to screen sharing. Built for students.">
     
-    <meta property="og:title" content="SnapShotAI — AI-powered screen capture">
+    <meta property="og:title" content="TestSnapper — AI-powered screen capture">
     <meta property="og:description" content="Capture anything on screen. Get instant AI answers. Invisible to screen sharing.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://snapshotai-beta.vercel.app">
-    <meta property="og:image" content="https://snapshotai-beta.vercel.app/og.png">
+    <meta property="og:url" content="https://testsnapper-beta.vercel.app">
+    <meta property="og:image" content="https://testsnapper-beta.vercel.app/og.png">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="SnapShotAI — AI-powered screen capture">
+    <meta name="twitter:title" content="TestSnapper — AI-powered screen capture">
     
     <link rel="icon" type="image/png" href="/favicon.png">
     <link rel="apple-touch-icon" href="/logo-256.png">
@@ -25,18 +25,18 @@
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --bg: #09090b;
-            --surface: #0f0f13;
-            --surface-2: #16161c;
-            --purple: #8b5cf6;
-            --purple-hover: #7c3aed;
-            --blue: #3b82f6;
-            --text: #f4f4f5;
-            --text-secondary: #a1a1aa;
-            --text-tertiary: #71717a;
-            --border: rgba(255,255,255,0.06);
-            --border-hover: rgba(255,255,255,0.12);
-            --glow: rgba(139,92,246,0.15);
+            --bg: #030803;
+            --surface: #051005;
+            --surface-2: #07120a;
+            --purple: #0eff0e;
+            --purple-hover: #00ff00;
+            --blue: #00ff6d;
+            --text: #b7ffb7;
+            --text-secondary: #8cff8c;
+            --text-tertiary: #6aff6a;
+            --border: rgba(0,255,0,0.14);
+            --border-hover: rgba(0,255,0,0.25);
+            --glow: rgba(0,255,0,0.18);
         }
 
         html { scroll-behavior: smooth; }
@@ -436,8 +436,8 @@
 <nav id="nav">
     <div class="nav-inner">
         <a href="#" class="nav-logo">
-            <img src="/logo-256.png" alt="SnapShotAI">
-            SnapShotAI
+            <img src="/logo-256.png" alt="TestSnapper">
+            TestSnapper
         </a>
         <div class="nav-links">
             <a href="#features">Features</a>
@@ -500,7 +500,7 @@
                         </div>
                     </div>
                     <div class="demo-overlay">
-                        <div class="demo-overlay-header"><img src="/logo-256.png" alt="" style="width:14px;height:14px;border-radius:3px;"> SnapShotAI</div>
+                        <div class="demo-overlay-header"><img src="/logo-256.png" alt="" style="width:14px;height:14px;border-radius:3px;"> TestSnapper</div>
                         <div class="demo-overlay-text">
                             <strong>Bug found on line 8.</strong> <code>low = mid</code> should be <code>low = mid + 1</code> — without the +1, the loop runs forever when the target is greater than <code>arr[mid]</code>.
                         </div>
@@ -518,7 +518,7 @@
 <section class="section">
     <div class="container">
         <div class="callout reveal">
-            <span class="callout-ghost"><img src="/logo-256.png" alt="SnapShotAI"></span>
+            <span class="callout-ghost"><img src="/logo-256.png" alt="TestSnapper"></span>
             <h2>Invisible to screen sharing</h2>
             <p>The AI overlay is hidden from Zoom, Teams, Discord, and OBS. You see the answers — everyone else sees nothing. Study smarter, not louder.</p>
         </div>
@@ -611,13 +611,13 @@
 <section class="cta" id="download">
     <div class="container">
         <h2 class="reveal">Stop copying and pasting<br>into ChatGPT.</h2>
-        <p class="reveal">Download SnapShotAI. Free, lightweight, invisible.</p>
+        <p class="reveal">Download TestSnapper. Free, lightweight, invisible.</p>
         <div class="hero-buttons reveal">
-            <a href="https://github.com/emberaidevs-spec/snapshotai/releases/download/v1.1.5/SnapShotAI.exe" class="btn btn-primary">
+            <a href="https://github.com/emberaidevs-spec/TestSnapper/releases/download/v1.1.5/TestSnapper.exe" class="btn btn-primary">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M0 2.3l6.5-.9v6.3H0V2.3zm7.3-1L16 0v7.7H7.3V1.3zM16 8.7l-.1 7.6-8.6-1.2V8.7H16zM6.5 15l-6.5-.9V8.7h6.5V15z"/></svg>
                 Download for Windows
             </a>
-            <a href="https://github.com/emberaidevs-spec/snapshotai/releases/download/v1.1.5/SnapShotAI.dmg" class="btn btn-secondary">
+            <a href="https://github.com/emberaidevs-spec/TestSnapper/releases/download/v1.1.5/TestSnapper.dmg" class="btn btn-secondary">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
                 Download for Mac
             </a>
@@ -631,7 +631,7 @@
 <footer>
     <div class="container">
         <div class="footer-inner">
-            <p>© 2026 SnapShotAI</p>
+            <p>© 2026 TestSnapper</p>
             <div class="footer-links">
                 <a href="https://twitter.com/EmberdevAi">Twitter</a>
                 <a href="#">Privacy</a>

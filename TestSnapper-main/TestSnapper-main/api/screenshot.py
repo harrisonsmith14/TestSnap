@@ -1,5 +1,5 @@
 """
-SnapShotAI - Screenshot Analysis API
+TestSnapper - Screenshot Analysis API
 Vercel serverless function
 """
 import os
@@ -13,9 +13,9 @@ from http.server import BaseHTTPRequestHandler
 import google.generativeai as genai
 
 GEMINI_API_KEY = os.getenv('GEMINI_API_KEY', '')
-SUPABASE_URL = os.getenv('SNAPSHOTAI_SUPABASE_URL', '')
-SUPABASE_ANON_KEY = os.getenv('SNAPSHOTAI_SUPABASE_ANON_KEY', '')
-SUPABASE_SERVICE_KEY = os.getenv('SNAPSHOTAI_SUPABASE_SERVICE_KEY', '')
+SUPABASE_URL = os.getenv('TESTSNAPPER_SUPABASE_URL', os.getenv('SNAPSHOTAI_SUPABASE_URL', ''))
+SUPABASE_ANON_KEY = os.getenv('TESTSNAPPER_SUPABASE_ANON_KEY', os.getenv('SNAPSHOTAI_SUPABASE_ANON_KEY', ''))
+SUPABASE_SERVICE_KEY = os.getenv('TESTSNAPPER_SUPABASE_SERVICE_KEY', os.getenv('SNAPSHOTAI_SUPABASE_SERVICE_KEY', ''))
 FREE_DAILY_LIMIT = 15
 MODEL = 'gemini-2.5-flash'
 
@@ -50,7 +50,7 @@ def get_usage(user_id):
     """Get today's capture count"""
     try:
         today = time.strftime('%Y-%m-%d')
-        url = f"{SUPABASE_URL}/rest/v1/snapshotai_usage?user_id=eq.{user_id}&date=eq.{today}&select=count"
+        url = f"{SUPABASE_URL}/rest/v1/testsnapper_usage?user_id=eq.{user_id}&date=eq.{today}&select=count"
         req = urllib.request.Request(url)
         req.add_header('apikey', SUPABASE_SERVICE_KEY)
         req.add_header('Authorization', f'Bearer {SUPABASE_SERVICE_KEY}')
@@ -64,7 +64,7 @@ def get_usage(user_id):
 def is_pro(user_id):
     """Check if user has active pro subscription"""
     try:
-        url = f"{SUPABASE_URL}/rest/v1/snapshotai_subscriptions?user_id=eq.{user_id}&plan=eq.pro&status=eq.active&select=id"
+        url = f"{SUPABASE_URL}/rest/v1/testsnapper_subscriptions?user_id=eq.{user_id}&plan=eq.pro&status=eq.active&select=id"
         req = urllib.request.Request(url)
         req.add_header('apikey', SUPABASE_SERVICE_KEY)
         req.add_header('Authorization', f'Bearer {SUPABASE_SERVICE_KEY}')
